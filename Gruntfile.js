@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             configFile: 'config/eslint.json',
             rulePaths: ['config/rules']
         },
-        target: ['src/**/*.js', 'index.js']
+        target: ['server_modules/**/*.js','src/**/*.js', 'index.js']
     },
     execute: {
       target: {
@@ -27,5 +27,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-execute');
   grunt.registerTask('default', ['eslint', 'open','execute']);
   grunt.registerTask('test', ['eslint']);
+  grunt.registerTask('run', ['open','execute']);
   
 };

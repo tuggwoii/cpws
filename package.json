@@ -9,6 +9,8 @@
   "author": "TuGG",
   "license": "ISC",
   "dependencies": {
+    "angular": "^1.4.8",
+    "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
     "ejs": "^2.3.4",
     "express": "^4.13.3"
