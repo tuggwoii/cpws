@@ -21,3 +21,4 @@ exports.responseSuccess = function (message) {
 exports.responseError = function (message) {
     return new responseError(message);
 }
+

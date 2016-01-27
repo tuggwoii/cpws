@@ -1,52 +1,41 @@
 'use strict';
 var express = require('express');
 var app = express();
+
+//REQUIRE LIBS
+var path = require('./config/path');
 var bodyParser = require('body-parser');
-var userService = require('./server_modules/service/user-service.js');
-var responseModel = require('./server_modules/model/response.js');
-app.set('port', (process.env.PORT || 8000));
-app.set('views', __dirname + '/src/views');
-app.set('view engine', 'ejs');
-app.use(bodyParser.json());
-app.use('/node_modules', express.static(__dirname + '/node_modules'));
-app.use('/src', express.static(__dirname + '/src'));
-app.use('/app', express.static(__dirname + '/app'));
+var cookieParser = require('cookie-parser')
+var log = require('.' + path.private + 'services/log');
+var db = require('.' + path.private + 'repository/db');
+
+//ROUTES
+var routes = require('.' + path.private + 'routes/index');
+var apiRoutes = require('.' + path.private + 'routes/api');
+
+//SETTINGS
 app.engine('html', require('ejs').renderFile);
+app.set('port', (process.env.PORT || 8000));
+app.set('views', __dirname + path.public + 'views');
+app.set('view engine', 'ejs');
 
-app.get('/', function (request, response) {
-    response.status(200).render('pages/index.html');
+//HANDLER
+app.use('/libs', express.static(__dirname + '/node_modules'));
+app.use('/js', express.static(__dirname + path.public + 'js'));
+app.use('/css', express.static(__dirname + path.public + 'css'));
+app.use('/img', express.static(__dirname + path.public + 'img'));
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use('/api/v1', apiRoutes);
+app.use('/', routes);
+
+db.sync().then(function (connection) {
+	console.log(connection);
+	//User.create({username:'tugg.solo@gmail.com', password:'1234'}).then(function (){
+		
+	//});
+	app.listen(app.get('port'), function () {
+		log.write('app is running on port ' + app.get('port'));
+	});
 });
 
-app.get('/backend', function (request, response) {
-    if (userService.isAuthenticate()) {
-        response.status(200).render('pages/dashboard.html');
-    }
-    else {
-        response.status(200).render('pages/login.html');
-    }
-});
-
-app.get('/account/me', function (request, response) {
-    response.json(userService.getCurrentUser(request.headers['token']));
-});
-
-app.post('/account/signin', function (request, response) {
-    var model = request.body;
-    if (model.username && model.password) {
-        userService.signIn(model);
-        response.json(responseModel.responseSuccess());
-    }
-    else {
-        response.json(responseModel.responseError());
-    }
-});
-
-app.get('*', function (request, response) {
-    response.status(404).render('pages/404.html');
-});
-
-app.listen(app.get('port'), function () {
-    /* eslint-disable */
-    console.log('Node app is running on port', app.get('port'));
-    /* eslint-enable */
-});
