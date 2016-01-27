@@ -1,0 +1,3 @@
+class AccountSerializer extends BaseSerializer {
+	
+}

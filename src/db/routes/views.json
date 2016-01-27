@@ -1,0 +1,19 @@
+{
+	"views":[
+		{
+			"url": "/",
+			"view": "pages/index.html",
+			"autorize": false
+		},
+		{
+			"url": "/login",
+			"view": "pages/login.html",
+			"autorize": false
+		},
+		{
+			"url": "/dashboard",
+			"view": "pages/dashboard.html",
+			"autorize": true
+		}
+	]
+}
