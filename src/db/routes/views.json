@@ -3,17 +3,17 @@
 		{
 			"url": "/",
 			"view": "pages/index.html",
-			"autorize": false
+			"role": [ ]
 		},
 		{
 			"url": "/login",
 			"view": "pages/login.html",
-			"autorize": false
+			"role": [ ]
 		},
 		{
 			"url": "/dashboard",
 			"view": "pages/dashboard.html",
-			"autorize": true
+      "role": [ ]
 		}
 	]
 }

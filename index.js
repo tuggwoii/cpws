@@ -2,8 +2,10 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-var routesAPI = require('./src/routes/api');
-var routesView = require('./src/routes/view');
+var apis = require('./src/routes/api');
+var pages = require('./src/routes/pages');
+var errors = require('./src/routes/errors');
+var log = require('./src/helpers/log');
 app.set('port', (process.env.PORT || 8000));
 app.set('views', __dirname + '/src/static/views');
 app.set('view engine', 'ejs');
@@ -12,13 +14,9 @@ app.use('/libs', express.static(__dirname + '/node_modules'));
 app.use('/css', express.static(__dirname + '/src/static/css'));
 app.use('/js', express.static(__dirname + '/src/static/js'));
 app.use(bodyParser.json());
-app.use('/api/v1/', routesAPI);
-app.use('/', routesView);
-app.get('*', function (request, response) {
-    response.status(404).render('pages/404.html');
-});
+app.use('/api/v1/', apis);
+app.use('/', pages);
+app.use(errors);
 app.listen(app.get('port'), function () {
-    /* eslint-disable */
-    console.log('App is running on port', app.get('port'));
-    /* eslint-enable */
+    log.write('App is running on port', app.get('port'));
 });

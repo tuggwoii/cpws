@@ -1,27 +1,27 @@
 'use strict';
 class BaseApi {
-	
-	constructor(serializer) {
+
+	constructor (serializer) {
 		this.serializer = serializer;
 	}
-	
+
 	success (response, model) {
 		var serializer = this.serializer;
 		response.json(serializer(model));
 	}
-	
-	error (response, err, status) {
-		var status = status || 400;
-		
-		response.status(status).json({
-			error: err
+
+	error (response, error, status) {
+		var code = status || 400;
+		response.status(code).json({
+            data: [],
+            error: {
+                message: error
+            }
 		});
 	}
-	
+
 	endpoints () {
-		return {
-			
-		}
+        return {};
 	}
 }
 

@@ -1,4 +1,4 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -7,7 +7,7 @@ module.exports = function(grunt) {
             configFile: 'config/eslint.json',
             rulePaths: ['config/rules']
         },
-        target: ['server_modules/**/*.js','src/**/*.js', 'index.js']
+        target: ['src/**/*.js', 'index.js']
     },
     execute: {
       target: {

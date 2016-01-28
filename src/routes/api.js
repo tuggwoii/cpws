@@ -1,7 +1,9 @@
 'use strict';
+var authorize = require('../authorize/auth');
 var accountApi = require('../api/account');
 var routes = [accountApi];
-module.exports = function (request, response, next) {
+
+module.exports = function (request, response) {
     var isFound = false;
     for (var i = 0; i < routes.length; i++) {
         var context = routes[i];
@@ -10,7 +12,22 @@ module.exports = function (request, response, next) {
             var route = endpoints[j];
             if (route.url === request.url && route.method === request.method.toLowerCase()) {
                 isFound = true;
-                route.response(context, request, response)
+                if (route.roles.length) {
+                    if (authorize.isAuthorize(request, route.roles)) {
+                        route.response(context, request, response);
+                    }
+                    else {
+                        response.status(400).json({
+                            data: [],
+                            error: {
+                                message: 'permission denied.'
+                            }
+                        });
+                    }
+                }
+                else {
+                    route.response(context, request, response);
+                }
                 break;
             }
         }
@@ -23,4 +40,5 @@ module.exports = function (request, response, next) {
             }
         });
     }
-}
+};
+

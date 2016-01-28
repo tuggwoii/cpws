@@ -1,5 +1,8 @@
 ﻿'use strict';
-var appModule = angular.module('app', []);
+var module = angular.module('app', []);
+module.config(function () {
+
+});
 var app = {
     onReady: function () {
         angular.bootstrap(document, ['app']);
@@ -8,4 +11,3 @@ var app = {
 $(document).ready(function () {
     app.onReady();
 });
-
