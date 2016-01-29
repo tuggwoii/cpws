@@ -17,7 +17,7 @@ module.exports = function (request, response) {
                         route.response(context, request, response);
                     }
                     else {
-                        response.status(400).json({
+                        response.status(401).json({
                             data: [],
                             error: {
                                 message: 'permission denied.'
