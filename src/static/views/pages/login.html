@@ -8,8 +8,8 @@
         <link href="css/animate.css" rel="stylesheet" type="text/css" />
         <link href="js/modules/notifications/styles/loading.css" rel="stylesheet" />
 	</head>
-	<body>
-		<div class="container-fluid">
+	<body ng-controller="RootController" ng-cloak>
+		<div class="container-fluid {{state.isReady}}" ng-show="state.isReady">
             <div class="row">
                 <div class="col-md-12">
                     <div class="sidebar"></div>
@@ -34,6 +34,7 @@
         <script src="js/modules/accounts/services/accounts.js"></script>
         <script src="js/modules/config/request.js"></script>
         <!--Controllers-->
+        <script src="js/modules/base/controllers/root-controller.js"></script>
         <script src="js/modules/accounts/controllers/controller-login.js"></script>
         <script src="js/modules/notifications/controllers/loading-controller.js"></script>
 	</body>

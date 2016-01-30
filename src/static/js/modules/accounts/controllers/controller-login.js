@@ -9,7 +9,6 @@ module.controller('LoginController', ['$scope', '$cookies', 'AccountService', 'N
         AccountService.me()
             .success(function () {
                 window.location.href = '/dashboard';
-                NotificationService.stopLoading();
             }).error(function () {
                 NotificationService.stopLoading();
             });
@@ -22,6 +21,7 @@ module.controller('LoginController', ['$scope', '$cookies', 'AccountService', 'N
             AccountService.login($scope.model)
                 .success(function (res) {
                     $cookies.put('Authorization', res.token);
+                    window.location.href = '/dashboard';
                     NotificationService.stopLoading();
                 })
                 .error(function (ressponse, status) {

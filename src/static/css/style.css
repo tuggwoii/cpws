@@ -1,3 +1,6 @@
+[ng\:cloak], [ng-cloak], .ng-cloak {
+  display: none !important;
+}
 body {
 	margin:0;
 	padding:0;
@@ -63,4 +66,8 @@ input.form-control {
 button {
     min-width: 200px;
     height:50px;
+}
+
+.container-fluid.True  {
+  animation: fadeIn 0.5s;
 }

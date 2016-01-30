@@ -6,6 +6,7 @@ module.factory('NotificationService', ['$rootScope', function ($rootScope) {
         },
         stopLoading: function () {
             $rootScope.$broadcast('StopLoading');
+            $rootScope.$broadcast('Ready');
         }
     };
 }]);
