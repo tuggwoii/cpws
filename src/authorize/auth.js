@@ -39,6 +39,21 @@ exports.authorizeUser = function (user) {
     return promise;
 };
 
+exports.removeUser = function (user) {
+    var promise = new Promise(function (resolve, reject) {
+        if (userSession[user.email]) {
+            var token = userSession[user.email];
+            delete tokenSession[userSession[user.email]];
+            delete userSession[user.email];
+            resolve();
+        }
+        else {
+            reject('no session');
+        }
+    });
+    return promise;
+};
+
 exports.isAuthorize = function (request, roles) {
     var token = request.headers['authorization'];
     if (!token) {

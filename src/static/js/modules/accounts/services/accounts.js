@@ -6,6 +6,9 @@ module.factory('AccountService', ['$http', 'URLS', function ($http, URLS) {
         },
         me: function () {
             return $http.get(URLS.accounts.me);
+        },
+        logout: function () {
+            return $http.post(URLS.accounts.logout);
         }
     };
 }]);

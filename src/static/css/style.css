@@ -5,8 +5,13 @@ body {
 	margin:0;
 	padding:0;
 	width:100%;
-	font-family: 'Dosis', sans-serif;
-    font-size:20px;
+	/*font-family: 'Lato', sans-serif; */
+    font-family: 'Open Sans', sans-serif;
+    font-size:16px;
+    color:#333;
+}
+p {
+    color: #666;
 }
 header {
     height: 80px;
@@ -20,8 +25,33 @@ nav {
      position:fixed;
      left:0;
      top:0;
-     width:80px;
      height:100%;
+     width:25%;
+     padding-top:30px;
+     padding-left:30px;
+}
+nav a {
+    display:block;
+    color:#fff;
+    font-size:20px;
+    padding:20px 10px;
+    cursor:pointer;
+}
+nav a .fa {
+    width:40px;
+    font-size:25px;
+}
+.fa.fa-desktop {
+    position: relative;
+    top: 4px;
+}
+.fa.fa-sign-out {
+    position: relative;
+    top: 3px;
+}
+nav a:hover, nav a:active, nav a:focus {
+    color:#fff;
+    text-decoration:none;
 }
 .logo-container {
     height:100%;
@@ -43,7 +73,8 @@ nav {
     text-align: left;
 }
 .container-fluid.has-sidebar {
-    padding-left: 95px;
+    width:75%;
+    margin-left:25%;
 }
 .sidebar {
     background: rgb(54,56,78);

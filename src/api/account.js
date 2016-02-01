@@ -23,6 +23,20 @@ class AccountApi extends BaseApi {
         }
 	}
 
+	logout (context, request, response) {
+	    var user = request.user;
+	    if (user && user.email) {
+	        authorize.removeUser(user).then(function () {
+	            response.status(200).json({});
+	        }).catch(function () {
+	            context.error(response, 'error occurred', 500);
+	        });
+	    }
+	    else {
+	        context.error(response, 'no session', 400);
+	    }
+	}
+
 	me (context, request, response) {
         context.success(response, request.user);
 	}
@@ -30,7 +44,8 @@ class AccountApi extends BaseApi {
 	endpoints () {
 		return [
 			{ url: '/accounts/login', method: 'post', roles: [], response: this.login },
-            { url: '/accounts/me', method: 'get', roles: ['admin'], response: this.me }
+            { url: '/accounts/me', method: 'get', roles: ['admin'], response: this.me },
+            { url: '/accounts/logout', method: 'post', roles: ['admin'], response: this.logout }
 		];
 	}
 }

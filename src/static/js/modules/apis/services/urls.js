@@ -4,7 +4,8 @@ module.factory('URLS', function () {
     return {
         accounts: {
             login: base + 'accounts/login',
-            me: base + 'accounts/me'
+            me: base + 'accounts/me',
+            logout: base + 'accounts/logout'
         }
     };
 });
