@@ -1,7 +1,8 @@
 'use strict';
 var authorize = require('../authorize/auth');
 var accountApi = require('../api/account');
-var routes = [accountApi];
+var pagesApi = require('../api/pages');
+var routes = [accountApi, pagesApi];
 
 module.exports = function (request, response) {
     var isFound = false;

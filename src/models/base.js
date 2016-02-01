@@ -1,8 +1,16 @@
 ﻿'use strict';
 class BaseModel {
 
+    constructor () {
+
+    }
+
     serialize (data) {
         return data;
+    }
+
+    save () {
+
     }
 
     isValid () {

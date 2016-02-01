@@ -1,14 +1,14 @@
 'use strict';
 var fs = require('fs');
-var routes = JSON.parse(fs.readFileSync('src/db/routes/views.json', 'utf8'));
+var Pages = require('../models/pages');
 module.exports = function (request, response) {
     var route = request.url;
+    var routes = Pages.get();
     var isFound = false;
-    for (var i = 0; i < routes.views.length; i++) {
-        var currentRoute = routes.views[i];
-        if (currentRoute.url === route) {
+    for (var i = 0; i < routes.length; i++) {
+        if (routes[i].url === route) {
             isFound = true;
-            response.status(200).render(currentRoute.view);
+            response.status(200).render(routes[i].view);
             break;
         }
     }
