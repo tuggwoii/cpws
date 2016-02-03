@@ -20,7 +20,7 @@ module.controller('LoginController', ['$scope', '$cookies', 'AccountService', 'N
             NotificationService.loading();
             AccountService.login($scope.model)
                 .success(function (res) {
-                    $cookies.put('Authorization', res.token);
+                    $cookies.put('Authorization', res.data.token);
                     window.location.href = '/dashboard';
                     NotificationService.stopLoading();
                 })

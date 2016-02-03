@@ -1,0 +1,1 @@
+{"datetime":"2016_02_03_22_41_00","message":"ENOENT: no such file or directory, lstat 'd:\\git\\cpws\\src\\db\\classes\\Other.json'"}

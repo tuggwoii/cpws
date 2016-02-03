@@ -20,5 +20,5 @@ app.use('/api/v1/', apis);
 app.use('/', pages);
 app.use(errors);
 app.listen(app.get('port'), function () {
-    log.write('App is running on port', app.get('port'));
+    log.write('App is running on port ' + app.get('port'));
 });

@@ -19,7 +19,7 @@ class AccountApi extends BaseApi {
             });
         }
         else {
-            context.error(response, 'account is invalid', 400);
+            context.error(response, 'Model is invalid', 400);
         }
 	}
 

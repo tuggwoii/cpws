@@ -17,5 +17,8 @@
       .state('pages', {
           url: "/pages",
           templateUrl: "backend/pages.html"
-      });
+      }).state('class', {
+          url: "/class",
+          templateUrl: "backend/class.html"
+      });;
 });

@@ -6,6 +6,10 @@ module.factory('URLS', function () {
             login: base + 'accounts/login',
             me: base + 'accounts/me',
             logout: base + 'accounts/logout'
+        },
+        classes: {
+            create: base + 'classes',
+            get: base + 'classes'
         }
     };
 });

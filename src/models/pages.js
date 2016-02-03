@@ -7,7 +7,7 @@ var pages;
 
 class Pages extends Base {
 
-    add(page) {
+    create (page) {
         this.sync();
         pages.push(page);
         return this.save();
@@ -16,14 +16,12 @@ class Pages extends Base {
     get () {
         if (!pages) {
             this.sync();
-            log.write('Reload routes');
         }
         return pages;
     }
 
     save () {
         var promise = new Promise(function (resolve, reject) {
-            console.log('1111');
             var dateTime = date.current();
             var file = './src/db/routes/views.json';
             fs.writeFile(file, JSON.stringify(pages), function (err) {
@@ -39,7 +37,7 @@ class Pages extends Base {
         pages = JSON.parse(fs.readFileSync('src/db/routes/views.json', 'utf8'));
     }
 
-    serialize(data) {
+    serialize (data) {
         var page = {
             url: data.url,
             view: data.view,

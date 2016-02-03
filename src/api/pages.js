@@ -8,8 +8,7 @@ class PagesApi extends BaseApi {
     create(context, request, response) {
         var data = request.body;
         if (Pages.isValid(data)) {
-            console.log(data);
-            Pages.add(data).then(function () {
+            Pages.create(data).then(function () {
                 context.success(response, data);
             }).catch(function (err) {
                 context.error(response, 'Internal server error', 500);
@@ -17,7 +16,7 @@ class PagesApi extends BaseApi {
             });
         }
         else {
-            context.error(response, 'account is invalid', 400);
+            context.error(response, 'Model is invalid', 400);
         }
     }
 

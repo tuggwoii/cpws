@@ -1,0 +1,23 @@
+﻿<h1>Class</h1>
+<div ng-controller="ClassController">
+    <form class="form" name="classForm">
+        <div class="form-group">
+            <label>Class Name</label>
+            <p class="alert alert-danger" ng-show="classForm.className.$error.required && classForm.className.$dirty">Class name is required.</p>
+            <p class="alert alert-danger" ng-show="state.error ">Error occurred. Please try again.</p>
+            <p class="alert alert-danger" ng-show="state.exist">Class name is exist.</p>
+            <div class="row">
+                <div class="col-md-9">
+                    <input type="text"
+                           class="form-control"
+                           name="className"
+                           required=""
+                           ng-model="model.name" />
+                </div>
+                <div class="col-md-3">
+                    <button type="button" class="full-widht btn btn-success" ng-click="createClass(classForm)">Create Class</button>
+                </div>
+            </div>            
+        </div>
+    </form>
+</div>
