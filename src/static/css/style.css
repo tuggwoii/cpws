@@ -107,3 +107,6 @@ p.alert {
 .btn {
     height:55px;
 }
+h1 {
+    text-transform:uppercase;
+}

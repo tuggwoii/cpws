@@ -24,6 +24,7 @@
         <div class="view" ui-view></div>
     </div>
     <div ng-include="'js/modules/notifications/views/loading.html'"></div>
+    <div ng-include="'js/modules/notifications/views/dialog.html'"></div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
     <script src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/libs/angular/angular.min.js"></script>
@@ -34,11 +35,13 @@
     <script src="/js/routes.js"></script>
     <script src="/js/modules/apis/services/urls.js"></script>
     <script src="/js/modules/accounts/services/accounts.js"></script>
-    <script src="/js/modules/dashboard/services/class-service.js"></script>
+    <script src="/js/modules/dashboard/services/classes.js"></script>
+    <script src="/js/modules/strings/services/strings.js"></script>
     <script src="/js/modules/notifications/services/notifications.js"></script>
     <script src="/js/modules/config/request.js"></script>
     <script src="/js/modules/base/controllers/nav-controller.js"></script>
     <script src="/js/modules/notifications/controllers/loading-controller.js"></script>
+    <script src="/js/modules/notifications/controllers/dialog-controller.js"></script>
     <script src="/js/modules/dashboard/controllers/dashboard-controller.js"></script>
     <script src="/js/modules/dashboard/controllers/class-controller.js"></script>
 </body>

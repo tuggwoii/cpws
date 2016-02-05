@@ -1,11 +1,23 @@
 ﻿'use strict';
-module.controller('DashboardController', ['$scope', '$cookies', 'AccountService', 'NotificationService', function ($scope, $cookies, AccountService, NotificationService) {
+module.controller('DashboardController', ['$scope', '$cookies', '$timeout', 'AccountService', 'NotificationService', 'StringService', function ($scope, $cookies, $timeout, AccountService, NotificationService, StringService) {
     $scope.state = {};
     $scope.user = {};
 
     $scope.onLoad = function () {
         $scope.state.isReady = false;
         $scope.requestUser();
+        $scope.loadString();
+    };
+
+    $scope.loadString = function () {
+        StringService.getStrings().success(function (response) {
+            $scope.strings = response;
+        }).error(function () {
+            NotificationService.openDialog({
+                title: 'error',
+                message: 'Can\'t load strings resource'
+            });
+        });
     };
 
     $scope.requestUser = function () {
@@ -18,7 +30,6 @@ module.controller('DashboardController', ['$scope', '$cookies', 'AccountService'
                 window.location.href = '/login';
             });
     };
-
 
     $scope.$on('Ready', function () {
         $scope.state.isReady = true;

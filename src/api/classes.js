@@ -27,7 +27,6 @@ class ClassesApi extends BaseApi {
 
     get (context, request, response) {
         Classes.get().then(function (obj) {
-            console.log('line 29', obj)
             context.success(response, obj, Classes.serializeList);
         }).catch(function (err) {
             context.error(response, 'Internal server error', 500);

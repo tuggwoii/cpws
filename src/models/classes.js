@@ -98,8 +98,7 @@ class Classes extends Base {
         return classes;
     }
 
-    serializeList(data) {
-        console.log('line 99', data);
+    serializeList (data) {
         return data;
     }
 }

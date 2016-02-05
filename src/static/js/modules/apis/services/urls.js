@@ -10,6 +10,7 @@ module.factory('URLS', function () {
         classes: {
             create: base + 'classes',
             get: base + 'classes'
-        }
+        },
+        strings: '/resources/strings.json'
     };
 });

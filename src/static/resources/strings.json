@@ -1,0 +1,11 @@
+﻿{
+  "class_title": "Class",
+  "class_name_label": "Class Name",
+  "class_name_required": "Class name is required.",
+  "class_name_exist": "Class name is already exist.",
+  "close": "Close",
+  "create": "Create",
+  "error_header": "Error",
+  "error_general": "Error occurred. Please try again.",
+  "reload": "Reload"
+}

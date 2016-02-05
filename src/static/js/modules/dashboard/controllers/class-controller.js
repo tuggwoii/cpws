@@ -11,10 +11,14 @@ module.controller('ClassController', ['$scope', 'ClassService', 'NotificationSer
 
 	$scope.loadClasses = function () {
 		NotificationService.loading();
-		ClassService.getAll().success(function (res) {
-			console.log(res);
+	    ClassService.getAll().success(function (response) {
+	        $scope.classes = response.data;
 		}).error(function (res) {
-			console.log(res);
+		    var error = {};
+		    if (response.error && response.error.message) {
+		        error.message = response.error.message
+		    }
+		    NotificationService.openDialog(error);
 		}).finally(function () {
 			NotificationService.stopLoading();
 		});
