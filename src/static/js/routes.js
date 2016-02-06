@@ -20,5 +20,8 @@
       }).state('class', {
           url: "/class",
           templateUrl: "backend/class.html"
-      });;
+      }).state('class-detail', {
+          url: "/class-detail",
+          templateUrl: "backend/class-detail.html"
+      });
 });

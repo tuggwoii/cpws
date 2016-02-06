@@ -13,7 +13,7 @@ module.controller('ClassController', ['$scope', 'ClassService', 'NotificationSer
 		NotificationService.loading();
 	    ClassService.getAll().success(function (response) {
 	        $scope.classes = response.data;
-		}).error(function (res) {
+	    }).error(function (response) {
 		    var error = {};
 		    if (response.error && response.error.message) {
 		        error.message = response.error.message
@@ -30,8 +30,9 @@ module.controller('ClassController', ['$scope', 'ClassService', 'NotificationSer
 		});
 		if (form.$valid) {
 			NotificationService.loading();
-			ClassService.create($scope.model).success(function () {
-				$scope.state = {};
+			ClassService.create($scope.model).success(function (response) {
+			    $scope.state = {};
+			    window.location.href = '#/class-detail?name=' + response.data.name;
 			}).error(function (res, status) {
 				$scope.state = {};
 				if (status === 400) {

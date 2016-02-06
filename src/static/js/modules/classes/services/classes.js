@@ -6,7 +6,10 @@ module.factory('ClassService', ['$http', 'URLS', function ($http, URLS) {
             return $http.post(URLS.classes.create, data);
         },
         getAll: function () {
-            return $http.get(URLS.classes.get);
+            return $http.get(URLS.classes.getAll);
+        },
+        get: function (id) {
+            return $http.get(URLS.classes.get.replace('{id}',id));
         }
     };
 }]);

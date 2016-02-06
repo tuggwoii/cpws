@@ -3,23 +3,30 @@ var fs = require('fs');
 var log = require('../helpers/log');
 var Base = require('./base');
 var date = require('../helpers/date');
-var pages;
+var basePath = './src/db/classes';
+var modelPath = basePath + '/{id}.json';
 
 class Classes extends Base {
 
-    create (data) {
-        var promise = new Promise(function (resolve, reject) {
-            var path = './src/db/classes/' + data.name + '.json';
-            var isExist = false;
-            try {
-                var file = fs.lstatSync(path);
-                if (file.isFile()) {
-                    isExist = true;
-                    reject('exist');
-                }
+    isExist (path) {
+        var exist = false;
+        try {
+            var file = fs.lstatSync(path);
+            if (file.isFile()) {
+                exist = true;
+                return true;
             }
-            catch (e) { }
-            if (!isExist) {
+        }
+        catch (e) { }
+        return false;
+    }
+
+    create (data) {
+        var me = this;
+        var promise = new Promise(function (resolve, reject) {
+            console.log(this);
+            var path = modelPath.replace('{id}', data.name);
+            if (!me.isExist(path)) {
                 var dateTime = new Date();
                 var logDate = date.current();
                 data.datetime_created = dateTime;
@@ -34,19 +41,39 @@ class Classes extends Base {
         return promise;
     }
 
-    get () {
+    get(id) {
+        var me = this;
         var promise = new Promise(function (resolve, reject) {
-            var path = './src/db/classes';
+            var path = modelPath.replace('{id}', id);
+            if (me.isExist(path)) {
+                fs.readFile(modelPath.replace('{id}', id), 'utf-8', function (err, content) {
+                    if (err) {
+                        reject(err);
+                    }
+                    else {
+                        resolve(JSON.parse(content));
+                    }
+                });
+            }
+            else {
+                reject(404);
+            }
+        });
+        return promise;
+    }
+
+    getAll () {
+        var promise = new Promise(function (resolve, reject) {
             var classes = [];
             var isError = false;
-            fs.readdir(path, function (err, files) {
+            fs.readdir(basePath, function (err, files) {
                 if (err) {
                     isError = true;
                     reject(err);
                 }
                 var fileCount = 0;
                 files.forEach(function (file) {
-                    fs.readFile(path +'/'+ file, 'utf-8', function (err, content) {
+                    fs.readFile(basePath + '/' + file, 'utf-8', function (err, content) {
                         if (err) {
                             isError = true;
                             reject(err);
@@ -78,10 +105,6 @@ class Classes extends Base {
         return promise;
     }
 
-    sync () {
-        pages = JSON.parse(fs.readFileSync('src/db/routes/views.json', 'utf8'));
-    }
-
     isValid (data) {
         if (data.name) {
             return true;
@@ -92,6 +115,8 @@ class Classes extends Base {
     serialize (data) {
         var classes = {
             name: data.name,
+            created_by: data.created_by,
+            updated_by: data.updated_by,
             datetime_created: data.datetime_created,
             datetime_updated: data.datetime_updated
         }

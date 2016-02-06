@@ -9,7 +9,8 @@ module.factory('URLS', function () {
         },
         classes: {
             create: base + 'classes',
-            get: base + 'classes'
+            getAll: base + 'classes',
+            get: base + 'classes/{id}'
         },
         strings: '/resources/strings.json'
     };

@@ -8,6 +8,8 @@ class ClassesApi extends BaseApi {
     create (context, request, response) {
         var data = request.body;
         if (Classes.isValid(data)) {
+            data.created_by = request.user;
+            data.updated_by = request.user;
             Classes.create(data).then(function (obj) {
                 context.success(response, obj);
             }).catch(function (err) {
@@ -25,8 +27,8 @@ class ClassesApi extends BaseApi {
         }
     }
 
-    get (context, request, response) {
-        Classes.get().then(function (obj) {
+    getAll (context, request, response) {
+        Classes.getAll().then(function (obj) {
             context.success(response, obj, Classes.serializeList);
         }).catch(function (err) {
             context.error(response, 'Internal server error', 500);
@@ -34,10 +36,25 @@ class ClassesApi extends BaseApi {
         });
     }
 
+    get (context, request, response) {
+        Classes.get(request.params['id']).then(function (obj) {
+            context.success(response, obj);
+        }).catch(function (err) {
+            if (err === 404) {
+                context.error(response, 'not found', 404);
+            }
+            else {
+                context.error(response, 'Internal server error', 500);
+                log.file(err.message);
+            }
+        });
+    }
+
     endpoints () {
         return [
 			{ url: '/classes', method: 'post', roles: ['admin'], response: this.create },
-            { url: '/classes', method: 'get', roles: ['admin'], response: this.get }
+            { url: '/classes', method: 'get', roles: ['admin'], response: this.getAll },
+            { url: '/classes', method: 'get', roles: ['admin'], response: this.get, params: ['id'] }
         ];
     }
 }
