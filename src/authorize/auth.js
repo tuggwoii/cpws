@@ -2,6 +2,7 @@
 var crypto = require('crypto');
 var tokenSession = [];
 var userSession = [];
+var Account = require('../models/account');
 
 function generateToken () {
     var promise = new Promise(function (resolve, reject) {
@@ -26,11 +27,11 @@ exports.getUser = function (token) {
 exports.authorizeUser = function (user) {
     var promise = new Promise(function (resolve, reject) {
         generateToken().then(function (token) {
-            if (userSession[user.email]) {
-                delete tokenSession[userSession[user.email]];
+            if (userSession[user.id]) {
+                delete tokenSession[userSession[user.id]];
             }
-            tokenSession[token] = user;
-            userSession[user.email] = token;
+            tokenSession[token] = Account.serializeLogin(user);;
+            userSession[user.id] = token;
             resolve(token);
         }).catch(function (err) {
             reject(err);

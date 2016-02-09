@@ -10,6 +10,9 @@ module.factory('ClassService', ['$http', 'URLS', function ($http, URLS) {
         },
         get: function (id) {
             return $http.get(URLS.classes.get.replace('{id}',id));
+        },
+        save: function (model) {
+            return $http.post(URLS.classes.get.replace('{id}', model.id), model);
         }
     };
 }]);

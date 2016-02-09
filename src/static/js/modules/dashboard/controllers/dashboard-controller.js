@@ -20,6 +20,10 @@ module.controller('DashboardController', ['$scope', '$cookies', '$timeout', 'Acc
         });
     };
 
+    $scope.string = function (key, alt) {
+        return $scope.strings[key] ? $scope.strings[key] : (alt? alt:'[' + key + ']');
+    };
+
     $scope.requestUser = function () {
         NotificationService.loading();
         AccountService.me()

@@ -13,6 +13,7 @@ app.engine('html', require('ejs').renderFile);
 app.use('/libs', express.static(__dirname + '/node_modules'));
 app.use('/css', express.static(__dirname + '/src/static/css'));
 app.use('/js', express.static(__dirname + '/src/static/js'));
+app.use('/img', express.static(__dirname + '/src/static/img'));
 app.use('/fonts', express.static(__dirname + '/src/static/fonts'));
 app.use('/resources', express.static(__dirname + '/src/static/resources'));
 app.use('/backend', express.static(__dirname + '/src/static/views/backend'));

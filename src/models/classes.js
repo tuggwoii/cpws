@@ -9,11 +9,9 @@ var modelPath = basePath + '/{id}.json';
 class Classes extends Base {
 
     isExist (path) {
-        var exist = false;
         try {
             var file = fs.lstatSync(path);
             if (file.isFile()) {
-                exist = true;
                 return true;
             }
         }
@@ -24,7 +22,6 @@ class Classes extends Base {
     create (data) {
         var me = this;
         var promise = new Promise(function (resolve, reject) {
-            console.log(this);
             var path = modelPath.replace('{id}', data.name);
             if (!me.isExist(path)) {
                 var dateTime = new Date();
@@ -41,7 +38,7 @@ class Classes extends Base {
         return promise;
     }
 
-    get(id) {
+    get (id) {
         var me = this;
         var promise = new Promise(function (resolve, reject) {
             var path = modelPath.replace('{id}', id);
@@ -115,8 +112,18 @@ class Classes extends Base {
     serialize (data) {
         var classes = {
             name: data.name,
-            created_by: data.created_by,
-            updated_by: data.updated_by,
+            created_by: {
+                id: data.created_by.id,
+                email: data.created_by.email,
+                name: data.created_by.name,
+                role: data.created_by.role
+            },
+            updated_by: {
+                id: data.updated_by.id,
+                email: data.updated_by.email,
+                name: data.updated_by.name,
+                role: data.updated_by.role
+            },
             datetime_created: data.datetime_created,
             datetime_updated: data.datetime_updated
         }

@@ -26,6 +26,15 @@ class Account extends Base {
         };
     }
 
+    serializeLogin(data) {
+        return {
+            id: data.id,
+            email: data.email,
+            name: data.name,
+            role: data.role
+        };
+    }
+
     isValid (data) {
         if (!data.email) {
             return false;
