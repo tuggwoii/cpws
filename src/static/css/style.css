@@ -3,14 +3,13 @@
 }
 * {
     -webkit-font-smoothing: antialiased;
-    text-shadow: rgba(0,0,0,.01) 0 0 1px;
 }
 body {
     margin: 0;
     padding: 0;
     width: 100%;
     font-family: 'Droid Sans', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     color: #333;
     overflow-x:hidden;
 }
@@ -118,7 +117,7 @@ nav a:hover, nav a:active, nav a:focus {
 }
 
 input.form-control {
-    height: 60px;
+    height: 50px;
     border-radius: 2px;
     font-size: 18px;
 }
@@ -174,8 +173,10 @@ h1 {
     font-size: 50px;
 }
 
-.feature h3 {
+h3 {
     color: #fff;
+    font-family: 'Lato', sans-serif;
+    font-size:20px;
 }
 
 .green-text {
@@ -272,6 +273,23 @@ h1 {
 }
 .navbar-toggle {
     margin-top: 25px;
+}
+.back {
+    position: absolute;
+    top:20px;
+    left:20px;
+    z-index:10;
+}
+.back a {
+    color:#fff;
+    text-decoration:none
+}
+.back a .fa {
+    margin-right:10px;
+}
+.back a:hover,.back a:active, .back a:focus  {
+    color:#fff;
+    text-decoration:none
 }
 @media screen and (max-width: 992px) {
     .steps .col-md-4 {
