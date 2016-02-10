@@ -4,6 +4,9 @@ module.factory('AccountService', ['$http', 'URLS', function ($http, URLS) {
         login: function (model) {
             return $http.post(URLS.accounts.login, model);
         },
+        register: function (model) {
+            return $http.post(URLS.accounts.register, model);
+        },
         me: function () {
             return $http.get(URLS.accounts.me);
         },

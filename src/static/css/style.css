@@ -291,6 +291,13 @@ h3 {
     color:#fff;
     text-decoration:none
 }
+
+.btn-success {
+    background:#00db7c;
+}
+.btn-success:hover {
+   background:#63C166;
+}
 @media screen and (max-width: 992px) {
     .steps .col-md-4 {
         height: 150px;

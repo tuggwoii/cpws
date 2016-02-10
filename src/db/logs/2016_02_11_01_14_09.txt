@@ -1,0 +1,1 @@
+{"datetime":"2016_02_11_01_14_09","message":"insert into \"users\" (\"confirm_password\", \"email\", \"first_name\", \"last_name\", \"password\") values ($1, $2, $3, $4, $5) returning \"id\" - column \"confirm_password\" of relation \"users\" does not exist"}

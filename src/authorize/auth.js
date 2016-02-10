@@ -30,7 +30,7 @@ exports.authorizeUser = function (user) {
             if (userSession[user.id]) {
                 delete tokenSession[userSession[user.id]];
             }
-            tokenSession[token] = Account.serializeLogin(user);;
+            tokenSession[token] = Account.serializeAuthen(user);
             userSession[user.id] = token;
             resolve(token);
         }).catch(function (err) {
@@ -42,14 +42,14 @@ exports.authorizeUser = function (user) {
 
 exports.removeUser = function (user) {
     var promise = new Promise(function (resolve, reject) {
-        if (userSession[user.email]) {
-            var token = userSession[user.email];
-            delete tokenSession[userSession[user.email]];
-            delete userSession[user.email];
+        if (userSession[user.id]) {
+            var token = userSession[user.id];
+            delete tokenSession[userSession[user.id]];
+            delete userSession[user.id];
             resolve();
         }
         else {
-            reject('no session');
+            reject('session not found');
         }
     });
     return promise;
@@ -65,5 +65,5 @@ exports.isAuthorize = function (request, roles) {
     if (!user) {
         return false;
     }
-    return roles.indexOf(user.role) > -1;
+    return roles.indexOf(user.role.name) > -1;
 };

@@ -1,6 +1,6 @@
 ﻿<div class="register-form text-center" ng-controller="RegisterController">
     <div class="logo-circle">
-        <img src="img/logo.png" alt="logo" />
+        <img src="img/logo-r.png" alt="logo" />
     </div>
     <h1>Register and try for free </h1>
     <form name="registerForm">
@@ -55,7 +55,7 @@
                    ng-required="true" />
             <small>must match with your password</small>
         </div>
-        <p class="text text-warning" ng-show="status.invalid">Email or Password is not valid.</p>
+        <p class="text text-warning" ng-show="status.error">Error occurred. Please try again.</p>
     </form>
     <button type="button" class="btn btn-success" ng-click="submit(registerForm)">Create an Account</button>
     <p>I already have an account. <a href="/login">Log In</a></p>

@@ -7,7 +7,8 @@ module.exports = function (grunt) {
             configFile: 'config/eslint.json',
             rulePaths: ['config/rules']
         },
-        target: ['src/**/*.js', 'index.js']
+        target: ['src/**/*.js', 'index.js'],
+        exclude: ['src/static/js/ui-router.js']
     },
     execute: {
       target: {

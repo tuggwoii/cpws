@@ -4,6 +4,7 @@ module.factory('URLS', function () {
     return {
         accounts: {
             login: base + 'accounts/login',
+            register: base + 'accounts/register',
             me: base + 'accounts/me',
             logout: base + 'accounts/logout'
         },

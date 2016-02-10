@@ -1,7 +1,7 @@
 ﻿<div ng-controller="LoginController">
     <form name="loginForm">
-        <span class="error-message label label-danger" ng-if="status.invalid">Username or password is invalid.</span>
-        <span class="error-message label label-danger" ng-if="status.error">Error occurred. Please try again.</span>
+        <span class="error-message label label-danger" ng-show="status.invalid">Username or password is invalid.</span>
+        <span class="error-message label label-danger" ng-show="status.error">Error occurred. Please try again.</span>
         <div class="form-group">
             <label>E-mail:</label>
             <input 

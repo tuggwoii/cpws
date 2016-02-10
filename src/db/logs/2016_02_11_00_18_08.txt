@@ -1,0 +1,1 @@
+{"datetime":"2016_02_11_00_18_08","message":"select \"roles\".* from \"roles\" where \"roles\".\"user_id\" = $1 limit $2 - column roles.user_id does not exist"}

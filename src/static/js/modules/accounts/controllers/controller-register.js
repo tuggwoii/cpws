@@ -21,15 +21,15 @@ module.controller('RegisterController', ['$scope', '$cookies', 'AccountService',
         });
         if (form.$valid && $scope.model.password === $scope.model.confirm_password) {
             NotificationService.loading();
-            AccountService.login($scope.model)
+            AccountService.register($scope.model)
                 .success(function (res) {
                     $cookies.put('Authorization', res.data.token);
                     window.location.href = '/dashboard';
                     NotificationService.stopLoading();
                 })
                 .error(function (ressponse, status) {
-                    if (status === 400) {
-                        $scope.status.invalid = true;
+                    if (status === 400 && ressponse.error.message === 'email exist') {
+                        $scope.status.exist = true;
                     }
                     else {
                         $scope.status.error = true;
