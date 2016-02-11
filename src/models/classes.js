@@ -15,7 +15,9 @@ class Classes extends Base {
                 return true;
             }
         }
-        catch (e) { }
+        catch (e) {
+            return false;
+        }
         return false;
     }
 
@@ -79,7 +81,7 @@ class Classes extends Base {
                             fileCount++;
                             classes.push(JSON.parse(content));
                             if (fileCount === files.length) {
-                                resolve(classes)
+                                resolve(classes);
                             }
                         }
                     });
@@ -89,15 +91,14 @@ class Classes extends Base {
         return promise;
     }
 
-    save () {
+    save (data) {
         var promise = new Promise(function (resolve, reject) {
-            var dateTime = date.current();
-            var file = './src/db/routes/views.json';
-            fs.writeFile(file, JSON.stringify(pages), function (err) {
-                if (err) reject(err);
-                log.write('pages saved: ' + dateTime);
-                resolve();
-            });
+            if(data) {
+                resolve(data);
+            }
+            else {
+                reject();
+            }
         });
         return promise;
     }
@@ -126,7 +127,7 @@ class Classes extends Base {
             },
             datetime_created: data.datetime_created,
             datetime_updated: data.datetime_updated
-        }
+        };
         return classes;
     }
 

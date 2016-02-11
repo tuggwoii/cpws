@@ -1,5 +1,4 @@
 'use strict';
-var fs = require('fs');
 var Base = require('./base');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../db/objects').User;
@@ -20,7 +19,7 @@ class Account extends Base {
         var promise = new Promise(function (resolve, reject) {
             new User({ 'email': email }).fetch()
               .then(function (model) {
-                  resolve(model)
+                  resolve(model);
               }).catch(reject);
         });
         return promise;
@@ -44,7 +43,7 @@ class Account extends Base {
     save (data) {
         var promise = new Promise(function (resolve, reject) {
             new User(data).save().then(function (user) {
-                resolve(user)
+                resolve(user);
             }).catch(reject);
         });
         return promise;
@@ -135,12 +134,10 @@ class Account extends Base {
                     }
                     else {
                         new Role({ 'name': 'user' }).fetch().then(function (role) {
-                            console.log(role);
                             if (role && role.attributes) {
                                 data.password = me.hashPassword(data.password);
                                 data.role_id = role.attributes.id;
                                 user = me.serializeRegister(data);
-                                console.log(user);
                                 resolve(user);
                             }
                             else {
@@ -151,7 +148,7 @@ class Account extends Base {
                     }
                 }).catch(function (err) {
                     log.file(err.message);
-                    reject(err)
+                    reject(err);
                 });
             }
         });

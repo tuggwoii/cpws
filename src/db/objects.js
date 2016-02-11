@@ -1,4 +1,5 @@
-﻿var knex = require('knex')({
+﻿'use strict';
+var knex = require('knex')({
     client: 'pg',
     connection: process.env.DATABASE_URL || {
         host: "ec2-54-225-223-40.compute-1.amazonaws.com",

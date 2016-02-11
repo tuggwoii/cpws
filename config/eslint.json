@@ -143,7 +143,7 @@
     "block-spacing": 0,
     "brace-style": [ 0, "1tbs" ],
     "callback-return": 0,
-    "camelcase": 2,
+    "camelcase": 0,
     "comma-dangle": [ 2, "never" ],
     "comma-spacing": 2,
     "comma-style": 0,

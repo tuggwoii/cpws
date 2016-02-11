@@ -16,7 +16,7 @@ module.controller('ClassDetailController', ['$scope', '$location', 'ClassService
         }).error(function (response) {
             var error = {};
             if (response.error && response.error.message) {
-                error.message = response.error.message
+                error.message = response.error.message;
             }
             NotificationService.openDialog(error);
         }).finally(function () {
@@ -41,7 +41,7 @@ module.controller('ClassDetailController', ['$scope', '$location', 'ClassService
                 else {
                     var error = {};
                     if (response.error && response.error.message) {
-                        error.message = response.error.message
+                        error.message = response.error.message;
                     }
                     NotificationService.openDialog(error);
                 }

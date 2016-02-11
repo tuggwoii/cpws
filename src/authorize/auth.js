@@ -44,7 +44,7 @@ exports.removeUser = function (user) {
     var promise = new Promise(function (resolve, reject) {
         if (userSession[user.id]) {
             var token = userSession[user.id];
-            delete tokenSession[userSession[user.id]];
+            delete tokenSession[token];
             delete userSession[user.id];
             resolve();
         }

@@ -1,4 +1,6 @@
-﻿var knex = require('knex')({
+﻿'use strict';
+var log = require('../helpers/log');
+var knex = require('knex')({
     client: 'pg',
     connection: process.env.DATABASE_URL || {
         host: "ec2-54-225-223-40.compute-1.amazonaws.com",
@@ -25,7 +27,7 @@ exports.up = function () {
             .inTable('roles');
         table.timestamp('created_datetime').defaultTo(knex.fn.now());
         table.timestamp('updated_datetime');
-    }).then(function (a) {
+    }).then(function () {
         return knex.insert({ name: 'admin' }).into('roles').returning('*');
     }).then(function (roles) {
         if (roles.length) {
@@ -40,29 +42,29 @@ exports.up = function () {
             }).into('users').returning('*');
         }
         else {
-            console.log('role not found')
+            log.write('role not found');
             process.exit();
         }
     }).then(function (user) {
-        console.log(user);
+        log.write(user);
         return knex.insert({ name: 'user' }).into('roles').returning('*');
     }).then(function () {
-        console.log('migration success');
+        log.write('migration success');
         process.exit();
-    }).catch(function (e) {
-        console.error(e);
+    }).catch(function (err) {
+        log.write(err);
     });
 };
 
 exports.down = function () {
     knex.schema.dropTable('users').then(function () {
         knex.schema.dropTable('roles').then(function () {
-            console.log('migration reverse success');
+            log.write('migration reverse success');
             process.exit();
-        }).catch(function (e) {
-            console.error(e);
+        }).catch(function (err) {
+            log.write(err);
         });
-    }).catch(function (e) {
-        console.error(e);
+    }).catch(function (err) {
+        log.write(err);
     });
 };

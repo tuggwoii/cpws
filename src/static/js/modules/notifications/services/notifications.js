@@ -12,6 +12,6 @@ module.factory('NotificationService', ['$rootScope', '$timeout', function ($root
             $timeout(function () {
                 $rootScope.$broadcast('OpenDialog', model);
             }, 1000);
-        },
+        }
     };
 }]);

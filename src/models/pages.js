@@ -42,7 +42,7 @@ class Pages extends Base {
             url: data.url,
             view: data.view,
             roles: data.roles
-        }
+        };
         return page;
     }
 }

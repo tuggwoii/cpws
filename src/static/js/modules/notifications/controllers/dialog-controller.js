@@ -1,5 +1,5 @@
 ﻿'use strict';
-module.controller('DialogController', ['$scope', '$timeout', function ($scope, $timeout) {
+module.controller('DialogController', ['$scope', '$timeout', function ($scope) {
 
     $scope.model = {};
 

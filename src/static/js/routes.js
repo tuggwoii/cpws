@@ -1,4 +1,5 @@
-﻿module.config(function ($stateProvider, $urlRouterProvider) {
+﻿'use strict';
+module.config(function ($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise("/");
 

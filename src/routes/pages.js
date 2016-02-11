@@ -1,6 +1,6 @@
 'use strict';
-var fs = require('fs');
 var Pages = require('../models/pages');
+
 module.exports = function (request, response) {
     var route = request.url;
     var routes = Pages.get();

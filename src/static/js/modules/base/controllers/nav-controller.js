@@ -11,7 +11,8 @@ module.controller('NavController', ['$scope', '$cookies', 'AccountService', 'Not
             $cookies.remove('Authorization');
             window.location.href = '/login';
         }).error(function () {
-            alert('Log out fail.');
+            $cookies.remove('Authorization');
+            window.location.href = '/login';
         }).finally(function () {
             NotificationService.stopLoading();
         });

@@ -5,7 +5,7 @@ var log = require('../helpers/log');
 
 class PagesApi extends BaseApi {
 
-    create(context, request, response) {
+    create (context, request, response) {
         var data = request.body;
         if (Pages.isValid(data)) {
             Pages.create(data).then(function () {
