@@ -30,11 +30,16 @@ class Account extends Base {
             new User({ 'email': email })
                 .fetch({ withRelated: ['role'] })
               .then(function (model) {
-                  var user = model.attributes;
-                  if (model.relations.role && model.relations.role.attributes) {
-                      user.role = model.relations.role.attributes;
+                  if (model) {
+                      var user = model.attributes;
+                      if (model.relations.role && model.relations.role.attributes) {
+                          user.role = model.relations.role.attributes;
+                      }
+                      resolve(user);
                   }
-                  resolve(user);
+                  else {
+                      resolve(null);
+                  }
               }).catch(reject);
         });
         return promise;

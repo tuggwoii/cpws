@@ -1,5 +1,5 @@
 ﻿'use strict';
-var log = require('../helpers/log');
+var log = require('../../helpers/log');
 var knex = require('knex')({
     client: 'pg',
     connection: process.env.DATABASE_URL || {

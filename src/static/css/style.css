@@ -110,16 +110,10 @@ nav a:hover, nav a:active, nav a:focus {
     width: 25%;
 }
 
-.login {
-    width: 75%;
-    margin-left: 25%;
-    padding: 50px;
-}
-
 input.form-control {
     height: 50px;
     border-radius: 2px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .container-fluid.True {
@@ -297,6 +291,12 @@ h3 {
 }
 .btn-success:hover {
    background:#63C166;
+}
+
+form label {
+   color: #555572;
+   font-size: 16px;
+   font-weight: normal;
 }
 @media screen and (max-width: 992px) {
     .steps .col-md-4 {

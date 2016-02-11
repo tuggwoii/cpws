@@ -2,22 +2,24 @@
 <html>
 	<head>
 		<title>CPWS</title>
-        <link href='https://fonts.googleapis.com/css?family=Lato:400,300italic,700,400italic,300,700italic' rel='stylesheet' type='text/css'>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href='https://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
         <link href="libs/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="css/fas/css/font-awesome.min.css" rel="stylesheet" />
         <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link href="css/login.css" rel="stylesheet" type="text/css" />
         <link href="css/animate.css" rel="stylesheet" type="text/css" />
         <link href="js/modules/notifications/styles/loading.css" rel="stylesheet" />
 	</head>
-	<body ng-controller="RootController" ng-cloak>
+	<body class="login" ng-controller="RootController" ng-cloak>
+        <div class="back"><a href="/"><i class="fa fa-arrow-left"></i> BACK</a></div>
 		<div class="container-fluid {{state.isReady}}" ng-show="state.isReady">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="sidebar"></div>
-                    <div class="login">
-                        <h1>Sign In</h1>
-                        <hr />
-                        <div ng-include="'js/modules/accounts/views/login.html'"></div>
-                    </div>
+                    <div ng-include="'js/modules/accounts/views/login.html'"></div>
                 </div>
             </div>
 		</div>
