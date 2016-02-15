@@ -4,11 +4,23 @@
 * {
     -webkit-font-smoothing: antialiased;
 }
+@font-face {
+    font-family: gotham-light;
+    src: url("/fonts/gotham-light.ttf")
+}
+@font-face {
+    font-family: gotham-med;
+    src: url("/fonts/gotham-med.ttf")
+}
+@font-face {
+    font-family: gotham-reg;
+    src: url("/fonts/gotham-reg.ttf")
+}
 body {
     margin: 0;
     padding: 0;
     width: 100%;
-    font-family: 'Droid Sans', sans-serif;
+    font-family: 'gotham-light', sans-serif;
     font-size: 18px;
     color: #333;
     overflow-x:hidden;
@@ -16,6 +28,14 @@ body {
 
 p {
     color: #ddd;
+    font-family: 'gotham-reg', sans-serif;
+}
+
+small {
+    font-weight: bold;
+    color: #ccc;
+    font-size: 14px;
+    font-family: 'gotham-reg', sans-serif;
 }
 
 .navbar {
@@ -33,39 +53,24 @@ p {
 }
 
 .side-nav {
-    background: rgb(72,75,104);
+    background: #06283d;
     position: fixed;
     left: 0;
     top: 0;
     height: 100%;
-    width: 25%;
-    padding-top: 30px;
-    padding-left: 30px;
+    width: 350px;
+    padding-top: 50px;
 }
 
 .side-nav a {
     display: block;
     color: #fff;
-    font-size: 20px;
-    padding: 20px 10px;
+    padding: 25px 10px;
     cursor: pointer;
 }
 .navbar-nav>li>a {
     padding:30px;
-}
-.side-nav a .fa {
-    width: 40px;
-    font-size: 25px;
-}
-
-.fa.fa-desktop {
-    position: relative;
-    top: 4px;
-}
-
-.fa.fa-sign-out {
-    position: relative;
-    top: 3px;
+    font-family: 'gotham-reg', sans-serif;
 }
 
 nav a:hover, nav a:active, nav a:focus {
@@ -73,19 +78,8 @@ nav a:hover, nav a:active, nav a:focus {
     text-decoration: none;
 }
 
-.logo-container {
-    height: 100%;
-    display: inline-block;
-}
-
 .underline {
     text-decoration: underline;
-}
-
-.logo-container img {
-    max-width: 170px;
-    margin-top: 15px;
-    margin-left: 15px;
 }
 
 .error-message {
@@ -97,8 +91,8 @@ nav a:hover, nav a:active, nav a:focus {
 }
 
 .container-fluid.has-sidebar {
-    width: 75%;
-    margin-left: 25%;
+    width: 100%;
+    margin-left: 350px;
 }
 
 .sidebar {
@@ -113,7 +107,8 @@ nav a:hover, nav a:active, nav a:focus {
 input.form-control {
     height: 50px;
     border-radius: 2px;
-    font-size: 15px;
+    font-size: 16px;
+    font-family: 'gotham-reg', sans-serif;
 }
 
 .container-fluid.True {
@@ -132,6 +127,8 @@ p.alert {
 h1 {
     padding: 0;
     margin: 0;
+    font-family: 'gotham-reg', sans-serif;
+    font-size: 42px;
 }
 
 .dark-blue-bg {
@@ -169,7 +166,7 @@ h1 {
 
 h3 {
     color: #fff;
-    font-family: 'Lato', sans-serif;
+    font-family: 'gotham-light', sans-serif;
     font-size:20px;
 }
 
@@ -216,6 +213,7 @@ h3 {
     line-height: 2.2;
     font-size:20px;
     text-shadow: 1px 1px 2px #000;
+    font-family: 'gotham-med', sans-serif;
 }
 .main-content h1 {
     color:#fff;
@@ -255,6 +253,7 @@ h3 {
     position:relative;
     font-size:20px;
     text-shadow: 1px 1px 1px #ccc;
+    font-family: 'gotham-med', sans-serif;
 }
 .navbar-brand img {
     max-width:35px;
@@ -276,7 +275,8 @@ h3 {
 }
 .back a {
     color:#fff;
-    text-decoration:none
+    text-decoration:none;
+    font-family: 'gotham-med', sans-serif;
 }
 .back a .fa {
     margin-right:10px;
@@ -297,7 +297,9 @@ form label {
    color: #555572;
    font-size: 16px;
    font-weight: normal;
+   font-family: 'gotham-med', sans-serif;
 }
+
 @media screen and (max-width: 992px) {
     .steps .col-md-4 {
         height: 150px;

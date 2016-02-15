@@ -11,6 +11,7 @@ body {
     font-family: 'Lato', sans-serif;
     font-weight: lighter;
     font-size: 30px;
+    font-family: 'gotham-light', sans-serif;
 }
 .logo-circle {
     border-radius: 45px;
@@ -38,17 +39,13 @@ body {
 .form-group {
     text-align:left;
 }
-small {
-    font-weight:bold;
-    color:#ccc;
-    font-size:12px;
-}
 .register .btn {
     margin-top:20px;
     width:100%;
     max-width: 450px;
     border-radius:3px;
     margin-bottom:15px;
+    font-family: 'gotham-med', sans-serif;
 }
 .register .text {
     margin:0;

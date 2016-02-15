@@ -5,12 +5,13 @@ body {
 .login {
     padding-bottom:100px;
 }
-.login-form h1 {
+.login-form  h1 {
     color:#fff;
     -webkit-font-smoothing: antialiased;
     font-family: 'Lato', sans-serif;
     font-weight: lighter;
     font-size: 30px;
+    font-family: 'gotham-light', sans-serif;
 }
 .logo-circle {
     border-radius: 45px;
@@ -49,6 +50,7 @@ small {
     max-width: 450px;
     border-radius:3px;
     margin-bottom:15px;
+    font-family: 'gotham-med', sans-serif;
 }
 .login-form .text {
     margin:0;
