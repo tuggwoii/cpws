@@ -5,7 +5,7 @@ class BaseApi {
 		this.serializer = serializer;
 	}
 
-    success (response, model, customSerializer) {
+    success(response, model, customSerializer) {
         var serializer = customSerializer || this.serializer;
 		response.json({ data: serializer(model) });
 	}
