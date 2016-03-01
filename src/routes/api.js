@@ -4,16 +4,18 @@ var staticApi = require('../api/static');
 var accountApi = require('../api/account');
 var pagesApi = require('../api/pages');
 var classesApi = require('../api/classes');
-var routes = [staticApi, accountApi, pagesApi, classesApi];
+var AppApi = require('../api/app');
+var routes = [accountApi, pagesApi, classesApi, AppApi];
+
 
 module.exports = function (request, response) {
     var isFound = false;
-    var requestUrl = request.url;
-    var requestPaths = requestUrl.split('/');
     for (var i = 0; i < routes.length; i++) {
         var context = routes[i];
         var endpoints = context.endpoints();
         for (var j = 0; j < endpoints.length; j++) {
+            var requestUrl = request.url;
+            var requestPaths = requestUrl.split('/');
             var route = endpoints[j];
             var paramsValid = true;
             if (route.params && route.params.length) {

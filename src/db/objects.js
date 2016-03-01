@@ -14,7 +14,7 @@ var bookshelf = require('bookshelf')(knex);
 
 var Role = bookshelf.Model.extend({
     tableName: 'roles',
-    role: function () {
+    users: function () {
         return this.hasMany(User);
     }
 });
@@ -26,5 +26,13 @@ var User = bookshelf.Model.extend({
     }
 });
 
+var App = bookshelf.Model.extend({
+    tableName: 'apps',
+    users: function () {
+        return this.hasMany(User);
+    }
+});
+
 exports.User = User;
 exports.Role = Role;
+exports.App = App;

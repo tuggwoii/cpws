@@ -1,6 +1,6 @@
 'use strict';
-var Base = require('./base');
 var bcrypt = require('bcrypt-nodejs');
+var Base = require('./base');
 var User = require('../db/objects').User;
 var Role = require('../db/objects').Role;
 var log = require('../helpers/log');
