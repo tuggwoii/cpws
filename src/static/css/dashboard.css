@@ -83,6 +83,9 @@ nav .fa.fa-tablet {
     left: 3px;
     position: relative;
 }
+.dashboard .container-fluid {
+	min-height:800px;
+}
 @media screen and (max-width: 992px) {
     .logo-circle img {
         width: 35px;
@@ -97,4 +100,10 @@ nav .fa.fa-tablet {
     nav .menu .menu-title {
         display:none;
     }
+}
+@media screen and (max-height: 800px) {
+    .side-nav {
+		position:absolute;
+		min-height:800px;
+	}
 }

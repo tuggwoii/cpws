@@ -2,11 +2,10 @@
 var authorize = require('../authorize/auth');
 var staticApi = require('../api/static');
 var accountApi = require('../api/account');
-var pagesApi = require('../api/pages');
-var classesApi = require('../api/classes');
-var AppApi = require('../api/app');
-var routes = [accountApi, pagesApi, classesApi, AppApi];
-
+var pageApi = require('../api/page');
+var classApi = require('../api/class');
+var appApi = require('../api/app');
+var routes = [staticApi, accountApi, appApi, pageApi, classApi];
 
 module.exports = function (request, response) {
     var isFound = false;

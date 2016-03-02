@@ -1,5 +1,5 @@
 'use strict';
-var Pages = require('../models/pages');
+var Pages = require('../models/page');
 
 module.exports = function (request, response) {
     var route = request.url;

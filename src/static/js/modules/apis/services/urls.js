@@ -1,7 +1,8 @@
 ﻿'use strict';
 module.factory('URLS', function () {
     var base = '/api/v1/';
-    return {
+    var models = ['classes', 'apps'];
+    var endpoints = {
         ui: {
             nav: base + 'backend/navigations'
         },
@@ -11,11 +12,24 @@ module.factory('URLS', function () {
             me: base + 'accounts/me',
             logout: base + 'accounts/logout'
         },
-        classes: {
-            create: base + 'classes',
-            getAll: base + 'classes',
-            get: base + 'classes/{id}'
-        },
         strings: '/resources/strings.json'
+    };
+
+    function modelEndpoints (model) {
+        return {
+            all: base + model,
+            one: base + model + '/{id}'
+        };
+    }
+
+    return {
+        model: function (model) {
+            if (models.indexOf(model) > -1) {
+                return modelEndpoints(model);
+            }
+            else {
+                return endpoints[model];
+            }
+        }
     };
 });

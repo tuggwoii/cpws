@@ -1,6 +1,6 @@
 ﻿'use strict';
 var BaseApi = require('./base');
-var Classes = require('../models/classes');
+var Classes = require('../models/class');
 var log = require('../helpers/log');
 
 class ClassesApi extends BaseApi {

@@ -1,7 +1,6 @@
 ﻿'use strict';
 var fs = require('fs');
 var BaseApi = require('./base');
-//var log = require('../helpers/log');
 
 class StaticApi extends BaseApi {
 
@@ -18,9 +17,9 @@ class StaticApi extends BaseApi {
         });
     }
 
-    endpoints() {
+    endpoints () {
         return [
-			{ url: '/backend/navigations', method: 'get', roles: ['admin','user'], response: this.nav },
+			{ url: '/backend/navigations', method: 'get', roles: ['admin', 'user'], response: this.nav }
         ];
     }
 }

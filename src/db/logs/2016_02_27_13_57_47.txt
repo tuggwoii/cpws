@@ -1,1 +1,0 @@
-{"datetime":"2016_02_27_13_57_47","message":"Cannot set property 'attributes' of undefined, data: {\"name\":\"my app 2\",\"public_key\":\"EksZ_Ncoe\",\"owner\":1,\"created_by\":1,\"updated_by\":1,\"created_datetime\":\"2016-02-27T06:57:46.737Z\",\"updated_datetime\":\"2016-02-27T06:57:46.737Z\"}"}

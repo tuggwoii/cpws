@@ -1,1 +1,0 @@
-{"datetime":"2016_02_27_11_12_17","message":"insert into \"apps\" (\"email\", \"password\") values ($1, $2) returning \"id\" - relation \"apps\" does not exist, data: {\"email\":\"tugg.solo@gmail.com\",\"password\":\"1234\"}"}

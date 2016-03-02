@@ -2,7 +2,7 @@
 module.factory('UIService', ['$http', 'URLS', function ($http, URLS) {
     return {
         getNavigations: function () {
-            return $http.get(URLS.ui.nav);
+            return $http.get(URLS.model('ui').nav);
         }
     };
 }]);

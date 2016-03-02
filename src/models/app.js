@@ -1,32 +1,27 @@
 ﻿'use strict';
-var fs = require('fs');
-var Log = require('../helpers/log');
 var Base = require('./base');
+var User = require('../db/objects').User;
 var App = require('../db/objects').App;
-var UserApp = require('../db/objects').UserApp;
 var Knex = require('../db/objects').Knex;
-var Date = require('../helpers/date');
 
 class Apps extends Base {
 
     isExist (appName) {
-        
+
     }
 
     create (data) {
         var promise = new Promise(function (resolve, reject) {
             new App(data).save().then(function (response) {
-				var app = response.attributes;
-				console.log(app);
-				var userApp = {
-					user_id: app.owner,
-					app_id: app.id
-				}
-				Knex.insert(userApp).into('users_apps')
+                var app = response.attributes;
+                var userApp = {
+                    user_id: app.owner,
+                    app_id: app.id
+                };
+                Knex.insert(userApp).into('apps_users')
 				.returning('*')
-				.then(function(res){
-					console.log(res);
-					resolve(app);
+				.then(function () {
+                    resolve(app);
 				}).catch(reject);
             }).catch(reject);
         });
@@ -34,29 +29,41 @@ class Apps extends Base {
     }
 
     get (id) {
-       
-        
+
+
     }
 
-    getAll () {
-       
-        
+    getAll (id) {
+        var promise = new Promise(function (resolve, reject) {
+            new User({ 'id': id })
+                .fetch({ withRelated: ['apps'] })
+              .then(function (apps) {
+                  if (apps.relations.apps && apps.relations.apps.length) {
+                      resolve(apps.relations.apps);
+                  }
+                  else {
+                      resolve(null);
+                  }
+              }).catch(reject);
+        });
+        return promise;
+
     }
 
     save (data) {
-        
+
     }
 
     isValid (data) {
-		var promise = new Promise(function (resolve, reject){
-			if(!data.name) {
-				reject('name is required.');
-			}
-			else {
-				resolve(true);
-			}
-		});
-		return promise;
+        var promise = new Promise(function (resolve, reject) {
+            if (!data.name) {
+                reject('name is required.');
+            }
+            else {
+                resolve(true);
+            }
+        });
+        return promise;
     }
 
     serialize (data) {

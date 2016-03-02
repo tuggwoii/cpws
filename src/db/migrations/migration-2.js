@@ -23,45 +23,44 @@ exports.up = function () {
         table.integer('created_by')
             .references('id')
             .inTable('users');
-		table.integer('updated_by')
+        table.integer('updated_by')
             .references('id')
             .inTable('users');
         table.timestamp('created_datetime').defaultTo(knex.fn.now());
         table.timestamp('updated_datetime');
-    }).then(function(res){
-		knex.schema.createTableIfNotExists('users', function (table) {
-			table.string('email').unique();
-		}).then(function(){
-			knex.schema.createTable('users_apps', function(table) {
-				table.integer('user_id').references('users.id');
-				table.integer('app_id').references('apps.id');
-			}).then(function(){
-				Log.write('migration success');
-				process.exit();
-			}).catch(function(){
-				Log.write(err);
-				process.exit();
-			});
-		}).catch(function(err){
-			Log.write(err);
-			process.exit();
-		});
-	})
-	.catch(function (err) {
+    }).then(function () {
+        knex.schema.createTableIfNotExists('users', function (table) {
+            table.string('email').unique();
+        }).then(function () {
+            knex.schema.createTable('apps_users', function (table) {
+                table.integer('user_id').references('users.id');
+                table.integer('app_id').references('apps.id');
+            }).then(function () {
+                Log.write('migration success');
+                process.exit();
+            }).catch(function (err) {
+                Log.write(err);
+                process.exit();
+            });
+        }).catch(function (err) {
+            Log.write(err);
+            process.exit();
+        });
+    }).catch(function (err) {
         Log.write(err);
         process.exit();
-    });
+	});
 };
 
 exports.down = function () {
-    knex.schema.dropTable('users_apps').then(function () {
-         knex.schema.dropTable('apps').then(function () {
-			Log.write('migration reverse success');
-			process.exit();
-		}).catch(function (err) {
-			Log.write(err);
-			process.exit();
-		});
+    knex.schema.dropTable('apps_users').then(function () {
+        knex.schema.dropTable('apps').then(function () {
+            Log.write('migration reverse success');
+            process.exit();
+        }).catch(function (err) {
+            Log.write(err);
+            process.exit();
+        });
     }).catch(function (err) {
         Log.write(err);
         process.exit();

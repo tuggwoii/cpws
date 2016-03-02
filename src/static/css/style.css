@@ -300,7 +300,12 @@ form label {
    font-weight: normal;
    font-family: 'gotham-med', sans-serif;
 }
-
+.uppercase {
+	text-transform:uppercase;
+}
+.capital {
+	text-transform: capitalize;
+}
 @media screen and (max-width: 992px) {
     .steps .col-md-4 {
         height: 150px;

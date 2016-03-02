@@ -1,2 +1,8 @@
-﻿<h1>Apps</h1>
-<p>Hello, apps!</p>
+﻿<div class="models" ng-controller="AppsController">
+	<h1>Apps</h1>
+	<div>
+	    <ul>
+            <li ng-repeat="item in model">{{item.name}}</li>
+        </ul>
+	</div>
+</div>

@@ -19,6 +19,10 @@ var Role = bookshelf.Model.extend({
     }
 });
 
+var UserApp = bookshelf.Model.extend({
+    tableName: 'apps_users'
+});
+
 var User = bookshelf.Model.extend({
     tableName: 'users',
     role: function () {
@@ -36,9 +40,6 @@ var App = bookshelf.Model.extend({
     }
 });
 
-var UserApp = bookshelf.Model.extend({
-    tableName: 'users_apps'
-});
 exports.Knex = knex;
 exports.User = User;
 exports.Role = Role;

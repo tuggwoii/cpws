@@ -22,7 +22,7 @@ exports.file = function (message) {
             message: message
         };
         fs.writeFile(file, JSON.stringify(logDetail), function (err) {
-            if (err) { 
+            if (err) {
 				log('error, create log: ' + dateTime);
 				reject(err);
 			}

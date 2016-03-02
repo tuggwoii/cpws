@@ -25,5 +25,5 @@ module.config(function ($stateProvider, $urlRouterProvider) {
       }).state('endpoints', {
           url: "/endpoints",
           templateUrl: "backend/endpoints.html"
-      })
+      });
 });
