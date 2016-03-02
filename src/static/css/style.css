@@ -92,7 +92,7 @@ nav a:hover, nav a:active, nav a:focus {
 
 .container-fluid.has-sidebar {
     width: 100%;
-    margin-left: 350px;
+    padding-left: 350px;
 }
 
 .sidebar {
@@ -304,6 +304,13 @@ form label {
 @media screen and (max-width: 992px) {
     .steps .col-md-4 {
         height: 150px;
+    }
+    .container-fluid.has-sidebar {
+        width: 100%;
+        padding-left: 100px;
+    }
+    .side-nav {
+        width: 100px;
     }
 }
 @media screen and (max-width: 768px) {

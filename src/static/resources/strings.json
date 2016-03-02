@@ -10,6 +10,7 @@
   "create": "Create",
   "error_header": "Error",
   "error_general": "Error occurred. Please try again.",
+  "log_out":  "log out",
   "property_name_label":  "Property Name",
   "reload": "Reload",
   "save_changes": "Save Changes"

@@ -8,21 +8,22 @@ module.config(function ($stateProvider, $urlRouterProvider) {
           url: "/",
           templateUrl: "backend/dashboard.html"
       })
-      .state('profile', {
-          url: "/profile",
-          templateUrl: "backend/profile.html",
-          controller: function ($scope) {
-              $scope.items = ["A", "List", "Of", "Items"];
-          }
+      .state('apps', {
+          url: "/apps",
+          templateUrl: "backend/apps.html"
       })
-      .state('pages', {
-          url: "/pages",
-          templateUrl: "backend/pages.html"
-      }).state('class', {
-          url: "/class",
-          templateUrl: "backend/class.html"
-      }).state('class-detail', {
-          url: "/class-detail",
-          templateUrl: "backend/class-detail.html"
-      });
+      .state('users', {
+          url: "/users",
+          templateUrl: "backend/users.html"
+      })
+      .state('models', {
+          url: "/models",
+          templateUrl: "backend/models.html"
+      }).state('data', {
+          url: "/data",
+          templateUrl: "backend/data.html"
+      }).state('endpoints', {
+          url: "/endpoints",
+          templateUrl: "backend/endpoints.html"
+      })
 });

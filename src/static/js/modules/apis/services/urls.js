@@ -2,6 +2,9 @@
 module.factory('URLS', function () {
     var base = '/api/v1/';
     return {
+        ui: {
+            nav: base + 'backend/navigations'
+        },
         accounts: {
             login: base + 'accounts/login',
             register: base + 'accounts/register',
