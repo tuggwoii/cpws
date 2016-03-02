@@ -1,5 +1,4 @@
 ﻿'use strict';
-var shortid = require('shortid');
 var Log = require('../../helpers/log');
 var knex = require('knex')({
     client: 'pg',
@@ -18,27 +17,51 @@ exports.up = function () {
         table.increments('id');
         table.string('name');
         table.string('public_key').unique();
-        table.string('group_key');
-        table.integer('create_by')
+        table.integer('owner')
+            .references('id')
+            .inTable('users');
+        table.integer('created_by')
+            .references('id')
+            .inTable('users');
+		table.integer('updated_by')
             .references('id')
             .inTable('users');
         table.timestamp('created_datetime').defaultTo(knex.fn.now());
         table.timestamp('updated_datetime');
-        console.log(table);
-    }).createTableIfNotExists('users', function (table) {
-        table.string('email').unique();
-        Log.write('migration success');
-        process.exit();
-    }).catch(function (err) {
+    }).then(function(res){
+		knex.schema.createTableIfNotExists('users', function (table) {
+			table.string('email').unique();
+		}).then(function(){
+			knex.schema.createTable('users_apps', function(table) {
+				table.integer('user_id').references('users.id');
+				table.integer('app_id').references('apps.id');
+			}).then(function(){
+				Log.write('migration success');
+				process.exit();
+			}).catch(function(){
+				Log.write(err);
+				process.exit();
+			});
+		}).catch(function(err){
+			Log.write(err);
+			process.exit();
+		});
+	})
+	.catch(function (err) {
         Log.write(err);
         process.exit();
     });
 };
 
 exports.down = function () {
-    knex.schema.dropTable('apps').then(function () {
-        Log.write('migration reverse success');
-        process.exit();
+    knex.schema.dropTable('users_apps').then(function () {
+         knex.schema.dropTable('apps').then(function () {
+			Log.write('migration reverse success');
+			process.exit();
+		}).catch(function (err) {
+			Log.write(err);
+			process.exit();
+		});
     }).catch(function (err) {
         Log.write(err);
         process.exit();

@@ -22,9 +22,13 @@ exports.file = function (message) {
             message: message
         };
         fs.writeFile(file, JSON.stringify(logDetail), function (err) {
-            if (err) reject(err);
-            log('error, create log: ' + dateTime);
-            resolve();
+            if (err) { 
+				log('error, create log: ' + dateTime);
+				reject(err);
+			}
+			else {
+				resolve();
+			}
         });
     });
     return promise;

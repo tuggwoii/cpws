@@ -23,16 +23,24 @@ var User = bookshelf.Model.extend({
     tableName: 'users',
     role: function () {
         return this.belongsTo(Role);
+    },
+	apps: function () {
+        return this.belongsToMany(App);
     }
 });
 
 var App = bookshelf.Model.extend({
     tableName: 'apps',
     users: function () {
-        return this.hasMany(User);
+        return this.belongsToMany(User);
     }
 });
 
+var UserApp = bookshelf.Model.extend({
+    tableName: 'users_apps'
+});
+exports.Knex = knex;
 exports.User = User;
 exports.Role = Role;
 exports.App = App;
+exports.UserApp = UserApp;

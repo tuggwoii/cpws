@@ -52,7 +52,6 @@ class Account extends Base {
             }).catch(reject);
         });
         return promise;
-
     }
 
     serialize (data) {
